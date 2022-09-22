@@ -39,6 +39,7 @@ void main() {
 	shifttable(p);
 	pos=horspool(src,p);
 	if(pos>=0)
-	  printf("\n The desired pattern was found starting from position %d",pos+1); else
-	  printf("\n The pattern was not found in the given text\n");
+        printf("\n The desired pattern was found starting from position %d", pos + 1);
+    else
+        printf("\n The pattern was not found in the given text\n");
 }
