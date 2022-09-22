@@ -17,7 +17,7 @@ void bfs(int a[10][10], int n, int v[10], int source)
     int node, i;
     v[source] = 1; //add source to v(indicated source is visited)
     q[++rear] = source;
-    while (front <= rear)//as long as queue is empty
+    while (front <= rear)//as long as queue is not full
     {
         node = q[front++];/*delete the next vertex to be explored from q*/
         for (i = 0;i < n;i++)

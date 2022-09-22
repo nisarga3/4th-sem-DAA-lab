@@ -3,18 +3,11 @@
 #include<math.h>          
 
 int N;
-
-int QuickSort(int a[N], int l, int r)
+void swap(int *a, int *b)
 {
-    if(r<=l || l<0 || r<0)
-        return 0;
-    int s,i,c1=0,c2=0,count=0,*c;
-    c = Partition(a,l,r);
-    s=c[0];
-    count = c[1];
-    c1 = QuickSort(a,l,s-1);
-    c2 = QuickSort(a,s+1,r);
-    return count+c1+c2; 
+    int t = *a;
+    *a = *b;
+    *b = t;
 }
 
 int *Partition(int a[N],int l, int r)
@@ -47,11 +40,18 @@ int *Partition(int a[N],int l, int r)
     return c;
 }
 
-void swap(int *a, int *b)
+
+int QuickSort(int a[N], int l, int r)
 {
-    int t = *a;
-    *a = *b;
-    *b = t;
+    if(r<=l || l<0 || r<0)
+        return 0;
+    int s,i,c1=0,c2=0,count=0,*c;
+    c = Partition(a,l,r);
+    s=c[0];
+    count = c[1];
+    c1 = QuickSort(a,l,s-1);
+    c2 = QuickSort(a,s+1,r);
+    return count+c1+c2; 
 }
 
 int main()

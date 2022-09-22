@@ -4,7 +4,37 @@
 
 int N = 30;
 
-int heapify(int[], int);
+int heapify(int a[30], int n)
+{
+    int v,j,k,i,flag,count=0;
+    for(i=n/2;i>=1;i--)
+    {
+        k=i;
+        v=a[k];
+        flag=0;
+        while(!flag && 2*k<=n)
+        {
+            j=2*k;
+            if(j<n)
+            {
+                if(a[j]<a[j+1])
+                {
+                    j=j+1;
+                }
+            }
+            if(v>=a[j])
+                flag=1;
+            else
+            {
+                a[k]=a[j];
+                k=j;
+                count++;
+            }
+        }
+        a[k]=v;
+    }
+    return count;
+}
 
 int main()
 {
@@ -24,9 +54,6 @@ int main()
                 for(i=1; i<=n; i++) 
                     scanf("%d",&a[i]);
                 heapify(a,n);
-                /*for(j=1;j<=n;j++)
-                        printf("%d ",a[j]);
-                    printf("\n");*/
                 printf("Heapsort order: \n");
                 for(i=n; i>1; i--)
                 {
@@ -88,36 +115,4 @@ int main()
         scanf("%d",&ch);
     }
     return 0;
-}
-
-int heapify(int a[30], int n)
-{
-    int v,j,k,i,flag,count=0;
-    for(i=n/2;i>=1;i--)
-    {
-        k=i;
-        v=a[k];
-        flag=0;
-        while(!flag && 2*k<=n)
-        {
-            j=2*k;
-            if(j<n)
-            {
-                if(a[j]<a[j+1])
-                {
-                    j=j+1;
-                }
-            }
-            if(v>=a[j])
-                flag=1;
-            else
-            {
-                a[k]=a[j];
-                k=j;
-                count++;
-            }
-        }
-        a[k]=v;
-    }
-    return count;
 }

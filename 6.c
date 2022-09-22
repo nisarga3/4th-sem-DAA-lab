@@ -1,68 +1,44 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include<stdio.h>
+#include<string.h>
+#include<conio.h>
 
-int table[1000];
-
-void shift_table(char *p)
-{
-    int m,j,i=0;
-    m = strlen(p);
-    for(int i=0;i<1000;i++)
-    {
-        table[i] = m;
-    }
-    for(int j=0;j<m-1;j++)
-    {
-        table[p[j]] = m-1-j;
-    }
-   
+#define MAX 500
+int t[MAX];
+void shifttable(char p[]) {
+	int i,j,m;
+	m=strlen(p);
+	for (i=0;i<MAX;i++)
+	  t[i]=m;
+	for (j=0;j<m-1;j++)
+	  t[p[j]]=m-1-j;
 }
-
-int horspool(char *p,char *t)
-{
-   
-    int k,i,m,n;
-    shift_table(p);
-    n = strlen(t);
-    m=strlen(p);
-   
-    i = m-1;
-    while(i <= n - 1)
-    {
-        k = 0;
-        while(k <= m-1 && t[i-k] == p[m-1-k])
-        {
-            k++;
-        }
-        if(k == m)
-         return i-m+1;
-        else
-         i = i + table[t[i]];
-    }
-    return -1;
+int horspool(char src[],char p[]) {
+	int i,j,k,m,n;
+	n=strlen(src);
+	m=strlen(p);
+	printf("\nLength of text=%d",n);
+	printf("\n Length of pattern=%d",m);
+	i=m-1;
+	while(i<n) {
+		k=0;
+		while((k<m)&&(p[m-1-k]==src[i-k]))
+		   k++;
+		if(k==m)
+		   return(i-m+1); else
+		   i+=t[src[i]];
+	}
+	return -1;
 }
-
-
-int main()
-{
-    char p[1000];
-    char t[1000];
-    printf("\nHorspool's String Matching Algorithm\n");
-    printf("Enter the pattern: ");
-    scanf("%s",p);
-    printf("\nEnter the text: ");
-    scanf("%s",t);
-   
-    int res = horspool(p,t);
-   
-    if(res>=0)
-    {
-        printf("\n%s is present in the text at position = %d",p,res);
-    }
-    else
-        printf("\n%s is not present in the text",p);
-   
-
-    return 0;
+void main() {
+	char src[100],p[100];
+	int pos;
+	printf("Enter the text in which pattern is to be searched:\n");
+	gets(src);
+	printf("Enter the pattern to be searched:\n");
+	gets(p);
+	shifttable(p);
+	pos=horspool(src,p);
+	if(pos>=0)
+	  printf("\n The desired pattern was found starting from position %d",pos+1); else
+	  printf("\n The pattern was not found in the given text\n");
 }
