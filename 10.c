@@ -37,5 +37,5 @@ int main() {
         exit(0);
     }sumSubset(0, 1, sum);
     //0-s 1-k sum-r
-    return(0);
+    return 0;
 }

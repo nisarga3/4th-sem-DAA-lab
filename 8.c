@@ -15,6 +15,7 @@ int minkey(int key[], bool mstset[], int V)
     }
     return min_index;
 }
+
 int printMST(int parent[], int graph[V][V], int V)
 {
     printf("Edge \tWeight \n");
@@ -23,6 +24,7 @@ int printMST(int parent[], int graph[V][V], int V)
         printf("%d-%d\t%d\n", parent[i], i, graph[i][parent[i]]);
     }
 }
+
 void primMST(int graph[V][V], int V)
 {
     int parent[V];
