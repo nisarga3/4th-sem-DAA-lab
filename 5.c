@@ -6,7 +6,7 @@ int N = 30;
 
 int heapify(int a[30], int n)
 {
-    int v,j,k,i,flag,count=0;
+    int v,j,k,i,flag,count=0;//descending order
     for(i=n/2;i>=1;i--)
     {
         k=i;
@@ -15,7 +15,7 @@ int heapify(int a[30], int n)
         while(!flag && 2*k<=n)
         {
             j=2*k;
-            if(j<n)
+            if(j<n)//there are 2 children
             {
                 if(a[j]<a[j+1])
                 {
