@@ -10,11 +10,7 @@ int place(int k, int i) {
     }
     return 1;
 }
-/**
- * It prints the solution in a tabular format
- * 
- * @param n The number of queens
- */
+
 void printQueen(int n) {
     int i, j;
     static int count = 1;

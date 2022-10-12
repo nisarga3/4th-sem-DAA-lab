@@ -27,7 +27,7 @@ void dijs(int n, int sv, int cost[10][10], int dist[], int pred[])
         }
         visited[v] = 1;
         count++;
-s        for (w = 0;w < n;w++)
+        for (w = 0;w < n;w++)
         {
             if (!visited[w] && dist[v] + cost[v][w] < dist[w])
             {
